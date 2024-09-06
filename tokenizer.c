@@ -3,12 +3,13 @@
 int main()
 {
     struct fLines *Lines = malloc(sizeof(struct fLines));
-    FILE *fp = fopen(".\\testfiles\\hello.py", "r");
+    FILE *fp = fopen("./testfiles/hello.py", "r");
     char *buffer = malloc(128);
     char c = getc(fp);
     buffer[0] = c;
     struct line *cur;
     int i = 1;
+    Lines->head = cur;
 
     while ((c != EOF))
     {
@@ -22,6 +23,7 @@ int main()
             i = 0;
         }
     }
+    printf("%p\n", Lines->head->tokens);
     printf("%s\n", Lines->head->tokens->string);
 }
 
